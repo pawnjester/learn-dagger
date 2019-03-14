@@ -2,7 +2,9 @@ package com.andela.learndagger
 
 import android.app.Application
 import com.andela.learndagger.di.component.ApplicationComponent
+import com.andela.learndagger.di.component.DaggerApplicationComponent
 import com.andela.learndagger.di.module.ApplicationModule
+import dagger.android.DaggerActivity
 import dagger.android.DaggerApplication
 
 class BaseApp: Application() {
@@ -16,8 +18,8 @@ class BaseApp: Application() {
     }
 
     fun setup() {
-//        component = DaggerApplicationComponent.builder()
-//                .applicationModule(ApplicationModule(this)).build()
+        component = DaggerApplicationComponent.builder()
+                .applicationModule(ApplicationModule(this)).build()
         component.inject(this)
     }
 
