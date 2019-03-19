@@ -7,9 +7,9 @@ import retrofit2.http.GET
 interface ApiService {
 
     companion object {
-        val BASE_URL = "https://api.nytimes.com/svc/topstories/v2/"
+        val BASE_URL = "https://jsonplaceholder.typicode.com/"
     }
 
-    @GET("food.json")
-    fun getFood(): Observable<List<Post>>
+    @GET("posts.json")
+    fun getPosts(): Observable<List<Post>>
 }
