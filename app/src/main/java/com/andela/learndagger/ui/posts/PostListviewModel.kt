@@ -5,6 +5,7 @@ import android.view.View
 import com.andela.learndagger.R
 import com.andela.learndagger.api.ApiService
 import com.andela.learndagger.base.BaseViewModel
+import com.andela.learndagger.models.Post
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -14,6 +15,8 @@ class PostListviewModel : BaseViewModel() {
 
     @Inject
     lateinit var postApi: ApiService
+
+    val postListAdapter = PostListAdapter();
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
@@ -36,7 +39,7 @@ class PostListviewModel : BaseViewModel() {
                 }.doOnTerminate {
                     onRetrievePostListFinish()
                 }.subscribe({
-                    onRetrievePostListSuccess()
+                    onRetrievePostListSuccess(it)
                 }, {
                     onRetrievePostListError()
                 })
@@ -52,8 +55,8 @@ class PostListviewModel : BaseViewModel() {
         loadingVisibility.value = View.GONE
     }
 
-    private fun onRetrievePostListSuccess(){
-
+    private fun onRetrievePostListSuccess(posts: List<Post>){
+        postListAdapter.updateList(posts)
     }
 
     private fun onRetrievePostListError(){
