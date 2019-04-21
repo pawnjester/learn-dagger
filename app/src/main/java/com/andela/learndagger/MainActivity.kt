@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.andela.learndagger.databinding.ActivityMainBinding
 import com.andela.learndagger.ui.posts.PostListviewModel
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.errorMessage.observe(this, Observer {
             errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })
-        binding.viewmodel = viewModel
+        binding.viewModel = viewModel
 
 //        injectDependency()
     }
@@ -48,9 +49,4 @@ class MainActivity : AppCompatActivity() {
     private fun hideError(){
         errorSnackbar?.dismiss()
     }
-//
-//    private fun injectDependency() {
-//        val activtiy = DaggerActivityComponent.builder().build()
-//        activtiy.inject(this)
-//    }
 }

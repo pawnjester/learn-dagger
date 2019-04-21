@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.andela.learndagger.di.component.DaggerViewModelInjector
 import com.andela.learndagger.di.component.ViewModelInjector
 import com.andela.learndagger.di.module.NetworkModule
+import com.andela.learndagger.ui.posts.PostListviewModel
 import com.andela.learndagger.ui.posts.PostViewModel
 
 abstract class BaseViewModel: ViewModel() {
@@ -19,7 +20,7 @@ abstract class BaseViewModel: ViewModel() {
 
     private fun inject() {
         when(this) {
-            is PostViewModel -> injector.inject(this)
+            is PostListviewModel -> injector.inject(this)
         }
     }
 

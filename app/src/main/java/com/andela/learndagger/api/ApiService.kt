@@ -10,6 +10,6 @@ interface ApiService {
         val BASE_URL = "https://jsonplaceholder.typicode.com/"
     }
 
-    @GET("posts.json")
+    @GET("/posts")
     fun getPosts(): Observable<List<Post>>
 }

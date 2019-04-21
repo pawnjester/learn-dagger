@@ -1,6 +1,5 @@
 package com.andela.learndagger.di.module
 
-import com.andela.learndagger.api.ApiFactory
 import com.andela.learndagger.api.ApiService
 import com.andela.learndagger.api.ApiService.Companion.BASE_URL
 import dagger.Module
@@ -17,7 +16,8 @@ object NetworkModule {
     @Provides
     @Reusable
     @JvmStatic
-    internal fun providePostApi(): ApiService = ApiFactory.create()
+    internal fun providePostApi(retrofit: Retrofit):
+            ApiService = retrofit.create(ApiService::class.java)
 
     @Provides
     @Reusable

@@ -37,10 +37,12 @@ class PostListAdapter: RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: SinglePostLayoutBinding)
         : RecyclerView.ViewHolder(binding.root) {
-
+        private val viewModel = PostViewModel()
         fun bind (item: Post) {
-            binding.item = item
-            binding.executePendingBindings()
+//            binding.item = item
+//            binding.executePendingBindings()
+            viewModel.bind(item)
+            binding.viewModel = viewModel
         }
     }
 }

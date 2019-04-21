@@ -1,6 +1,7 @@
 package com.andela.learndagger.ui.posts
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import android.view.View
 import com.andela.learndagger.R
 import com.andela.learndagger.api.ApiService
